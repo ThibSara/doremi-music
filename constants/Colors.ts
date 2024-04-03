@@ -3,7 +3,9 @@
 export default {
   light: {
     text: '#000',
-    background: '#fff',
+    background: '#8367F9',
+    tint: '#8367F9',
+
   },
   dark: {
     text: '#fff',
