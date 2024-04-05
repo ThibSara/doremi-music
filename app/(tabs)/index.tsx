@@ -9,7 +9,6 @@ const Index = () => {
   return (
     <View style={styles.container}>
       <Header />
-
       <StreaksCalendar />
     </View>
   );
@@ -17,7 +16,6 @@ const Index = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     paddingHorizontal: 16,
     paddingTop: Dimensions.get('window').height * 0.07,
   }
