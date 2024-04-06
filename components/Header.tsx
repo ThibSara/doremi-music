@@ -9,7 +9,7 @@ import * as Animatable from 'react-native-animatable';
 const objective = 5;
 
 const Header = () => {
-  const [progress, setProgress] = useState(1);
+  const [progress, setProgress] = useState(0);
   const completionTextRef = useRef(null);
 
   const handleUpgradeProgress = () => {

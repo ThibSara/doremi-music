@@ -1,16 +1,14 @@
-
-
 export default {
   light: {
-    text: '#000',
-    background: '#8367F9',
-    tint: '#8367F9',
+    text: '#212121',
+    background: '#FFFEFE',
+    tint: '#B4A3FF',
 
   },
   dark: {
-    text: '#fff',
-    background: '#FDA802',
-    tint: '#FDA802',
+    text: '#FFFEFE',
+    background: '#212121',
+    tint: '#8367F9',
   },
 
   purple:'#8367F9',

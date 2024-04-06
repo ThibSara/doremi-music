@@ -1,12 +1,14 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { View, Text, Image, ScrollView, Platform, Dimensions } from 'react-native';
-import dayNote from '@/assets/images/day-note.png';
+import { View, Text, Image, ScrollView, Platform, Dimensions,ImageSourcePropType } from 'react-native';
 import Colors from '@/constants/Colors';
 
 const StreaksCalendar  : React.FC = () => {
+
+  const dayNote: ImageSourcePropType = require('@/assets/images/day-note.png');
   const today = new Date();
   const sevenDaysBefore = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 7);
   const twoDaysAfter = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 2);
+  const screenWidth = Dimensions.get('window').width;
 
   const [imagesLoaded, setImagesLoaded] = useState(0);
 
@@ -20,8 +22,8 @@ const StreaksCalendar  : React.FC = () => {
     const dayName = ['D', 'L', 'M', 'Me', 'J', 'V', 'S'][currentDate.getDay()];
     const imageStyle = isToday ? { tintColor: Colors.purple } : { tintColor: Colors.C250 };
     days.push(
-      <View key={currentDate.toString()} style={{ flex: 1, paddingVertical: 10,paddingHorizontal:17, alignItems: 'center' }}>
-        <View style={{ borderColor: isToday ? Colors.lightPurple : 'transparent', borderWidth: 3, borderRadius: 22, alignItems: 'center', paddingHorizontal: 12, paddingVertical: 10 }}>
+      <View key={currentDate.toString()} style={{ flex: 1, alignItems: 'center' }}>
+        <View style={{ borderColor: isToday ? Colors.lightPurple : 'transparent', borderWidth: 3, borderRadius: 22, alignItems: 'center', paddingHorizontal: 12,marginHorizontal:(screenWidth-32) / 25, paddingVertical: 10 }}>
           <Text style={{ marginBottom: 4, fontFamily: 'nun-bold', color: Colors.C300 }}>{dayName}</Text>
           <Image
             source={dayNote}
@@ -44,7 +46,7 @@ const StreaksCalendar  : React.FC = () => {
       );
       if (indexOfToday !== -1) {
         // Scroll to the center of the content
-        const screenWidth = Dimensions.get('window').width;
+        
         const scrollPosition = (indexOfToday * (today.getDay() === 0 ? 1 : 2)) * (screenWidth / 5); // Adjust this value as needed
         if (Platform.OS === 'ios') {
           // iOS requires delay for scrollTo function
@@ -65,7 +67,7 @@ const StreaksCalendar  : React.FC = () => {
       ref={scrollViewRef}
       contentContainerStyle={{ alignItems: 'center', justifyContent: 'center' }}
     >
-      <View style={{ flexDirection: 'row', paddingTop: 40 }}>
+      <View style={{ flexDirection: 'row', paddingTop: 30 }}>
         {days}
       </View>
     </ScrollView>
