@@ -4,7 +4,7 @@ import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import { useColorScheme} from '@/components/useColorScheme';
-
+import Colors from '@/constants/Colors';
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
@@ -26,10 +26,7 @@ export default function RootLayout() {
     'nun-semibold': require('@/assets/fonts/Nunito-SemiBold.ttf'),
     'nun-extra-bold': require('@/assets/fonts/Nunito-ExtraBold.ttf'),
     'nun-medium': require('@/assets/fonts/Nunito-Medium.ttf'),
-    'nun-nun-extra-light': require('@/assets/fonts/Nunito-ExtraLight.ttf'),
-
-    
-
+    'nun-extra-light': require('@/assets/fonts/Nunito-ExtraLight.ttf'),
   });
 
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.
@@ -50,14 +47,34 @@ export default function RootLayout() {
   return <RootLayoutNav />;
 }
 
+const MyDarkTheme = {
+  ...DarkTheme,
+  colors: {
+    ...DarkTheme.colors,
+    background: Colors.light.background,
+    text: Colors.dark.text,
+    tint: Colors.dark.tint,
+  },
+};
+
+const MyDefaultTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: Colors.light.background,
+    text: Colors.light.text,
+    tint: Colors.light.tint,
+  },
+};
+
+
 function RootLayoutNav() {
   const colorScheme = useColorScheme();
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+    <ThemeProvider value={colorScheme === 'dark' ? MyDarkTheme : MyDefaultTheme}>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
       </Stack>
     </ThemeProvider>
   );
