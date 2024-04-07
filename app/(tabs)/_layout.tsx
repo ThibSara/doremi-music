@@ -1,8 +1,7 @@
 import { View, Text,Image } from 'react-native'
 import {Tabs} from 'expo-router'
 import Colors from '@/constants/Colors'
-import { Octicons } from '@expo/vector-icons';
-import { Feather } from '@expo/vector-icons';
+import { Octicons, Feather } from '@expo/vector-icons';
 import profileIcon from '@/assets/images/profile-icon.png';
 import { impactAsync, ImpactFeedbackStyle } from 'expo-haptics';
 
