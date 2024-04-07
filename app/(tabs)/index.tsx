@@ -1,5 +1,5 @@
 import React from 'react';
-import { View,StyleSheet,Dimensions } from 'react-native';
+import { View,StyleSheet,Dimensions, Text } from 'react-native';
 import StreaksCalendar from '@/components/StreaksCalendar';
 import Header from '@/components/Header';
 import Colors from '@/constants/Colors';
