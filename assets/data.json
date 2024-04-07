@@ -10,6 +10,7 @@
             "time":"3 min",
             "type": "exercise",
             "isCompleted": false,
+            "image_uri": "1.png",
             "data": [
               {
                 "instruction": "Place les notes au bon endroit",
@@ -48,6 +49,7 @@
             "time":"2 min",
             "type": "exercise",
             "isCompleted": false,
+            "image_uri": "@/assets/images/course-card/2.png",
             "data": [
               {
                 "instruction": "Place le rythme au bon endroit",
