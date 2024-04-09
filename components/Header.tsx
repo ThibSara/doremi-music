@@ -15,7 +15,8 @@ const Header = () => {
   const handleUpgradeProgress = () => {
     setProgress(prevProgress => Math.min(prevProgress + 1, objective));
   };
-  const { width: windowWidth } = Dimensions.get('window');
+  const { width: windowWidth, height: windowHeight } = Dimensions.get('window');
+  const scale = Math.min(windowWidth / 375, windowHeight / 812);
 
   return (
     <View style={styles.container}>
@@ -40,20 +41,25 @@ const Header = () => {
           />
         </View>
         <View style={styles.textContainer}>
+          {/*
           <Animatable.Text
             ref={completionTextRef}
             animation={progress === objective ? 'pulse' : ''}
             duration={1000}
             easing="ease-out"
-            style={styles.textStyle}
+            style={[styles.textStyle, { fontSize:  Math.round(20 * scale) }]}
           >
+        
             {`${progress === 1 ? '1 leçon complétée' : `${progress} leçons complétées`}`}
           </Animatable.Text>
-          <Text style={styles.objectifText}>
+          */}
+          <Text style={[styles.textStyle, { fontSize:  Math.round(19 * scale) }]} >Bonjour Paolo</Text>
+          <Text style={[styles.objectifText, { fontSize:  Math.round(16 * scale) } ]}>
             {progress === objective
               ? 'Bravo objectif atteint !'
-              : `Encore ${objective - progress} pour atteindre ton objectif ! `}
+              : `Encore ${objective - progress} leçons ! `}
           </Text>
+            
         </View>
         <View style={styles.imageContainer}>
           <Image source={dayNote} style={styles.image} />
@@ -66,7 +72,7 @@ const Header = () => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingBottom: Dimensions.get('window').height * 0.03,
+    paddingBottom: Dimensions.get('window').height * 0.02,
     borderBottomColor: Colors.C200,
     borderBottomWidth: 1,
   },
@@ -91,7 +97,7 @@ const styles = StyleSheet.create({
   objectifText: {
     fontFamily: 'nun-semibold',
     color: Colors.C250,
-    fontSize: 12,
+    fontSize: 14,
   },
   image: {
     width: Dimensions.get('window').width * 0.12,

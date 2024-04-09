@@ -24,7 +24,7 @@ const StreaksCalendar  : React.FC = () => {
     days.push(
       <View key={currentDate.toString()} style={{ flex: 1, alignItems: 'center' }}>
         <View style={{ borderColor: isToday ? Colors.lightPurple : 'transparent', borderWidth: 3, borderRadius: 22, alignItems: 'center', paddingHorizontal: 12,marginHorizontal:(screenWidth-32) / 25, paddingVertical: 10 }}>
-          <Text style={{ marginBottom: 4, fontFamily: 'nun-bold', color: Colors.C300 }}>{dayName}</Text>
+          <Text style={{ marginBottom: 4, fontFamily: 'nun-bold', color: Colors.C250, fontSize:14 }}>{dayName}</Text>
           <Image
             source={dayNote}
             style={[{ width: 15, height: 20 }, imageStyle]}
@@ -67,7 +67,7 @@ const StreaksCalendar  : React.FC = () => {
       ref={scrollViewRef}
       contentContainerStyle={{ alignItems: 'center', justifyContent: 'center' }}
     >
-      <View style={{ flexDirection: 'row', paddingTop: 30 }}>
+      <View style={{ flexDirection: 'row'}}>
         {days}
       </View>
     </ScrollView>

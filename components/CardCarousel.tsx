@@ -93,6 +93,7 @@ const CardCarousel: React.FC<CardCarouselProps> = ({ unitId }) => {
               </View>
             </View>
             <View style={styles.animationContainer}>
+            {/* 
               <LottieView
                 source={confetti}
                 autoPlay={!playedOnce}
@@ -100,6 +101,7 @@ const CardCarousel: React.FC<CardCarouselProps> = ({ unitId }) => {
                 onAnimationFinish={() => setPlayedOnce(true)}
                 style={styles.confetti}
               />
+               */}
             </View>
           </View>
         )}

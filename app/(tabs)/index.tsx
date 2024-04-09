@@ -11,15 +11,19 @@ import {Octicons } from '@expo/vector-icons';
 const Index = () => {
 
   return (
+    <View>
     <View style={styles.container}>
       <Header />
+    <View style = {styles.paddingCalendar}>
       <StreaksCalendar />
+    </View>
       <Text style = {styles.Title}>Reprend la où tu en étais</Text>
       <View style ={styles.subtitleContainer}>
       <Text style = {styles.subTitle}>Chapitre 1</Text>
       <Octicons name="dot-fill" size={12} color={Colors.C200} style = {{marginHorizontal:8}}/>
 
       <Text style = {styles.subTitle} >Les Bases</Text>
+      </View>
       </View>
       <View style={styles.Carousel}>
       <CardCarousel  unitId='1'  />
@@ -31,7 +35,10 @@ const Index = () => {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 16,
-    paddingTop: Dimensions.get('window').height * 0.07,
+    paddingTop: Dimensions.get('window').height * 0.05,
+  },
+  paddingCalendar :{
+    paddingTop: Dimensions.get('window').height * 0.03,
   },
   subtitleContainer:{
     flexDirection: 'row',
