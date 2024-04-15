@@ -6,6 +6,8 @@ import Colors from '@/constants/Colors';
 import CardCarousel from '@/components/CardCarousel';
 import data from '@/assets/data.json';
 import {Octicons } from '@expo/vector-icons';
+import Course from '@/components/Course';
+import Wallet from '@/components/WalletFlatlist';
 
 
 const Index = () => {
@@ -26,6 +28,7 @@ const Index = () => {
       </View>
       </View>
       <View style={styles.Carousel}>
+      
       <CardCarousel  unitId='1'  />
       </View>
     </View>
