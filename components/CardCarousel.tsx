@@ -9,7 +9,6 @@ import { Feather, Octicons } from '@expo/vector-icons';
 import { Pagination } from 'react-native-snap-carousel';
 import { impactAsync, ImpactFeedbackStyle } from 'expo-haptics';
 
-
 interface Course {
   id: string;
   name: string;
@@ -28,7 +27,7 @@ interface CardCarouselProps {
   unitId: string;
 }
 
-const { width: screenWidth } = Dimensions.get('window');
+const { width: screenWidth , height:screenHeight} = Dimensions.get('window');
 
 const CardCarousel: React.FC<CardCarouselProps> = ({ unitId }) => {
   const translateYImage = useRef(new Animated.Value(0)).current;
@@ -74,7 +73,7 @@ const CardCarousel: React.FC<CardCarouselProps> = ({ unitId }) => {
 
   // Render the carousel with course information
   return (
-    <View>
+    <View style ={{alignItems:'center'}}>
       <Carousel
         ref={carouselRef}
         data={unit.courses}
@@ -82,18 +81,18 @@ const CardCarousel: React.FC<CardCarouselProps> = ({ unitId }) => {
           <View>
             <View style={[styles.card, { backgroundColor: item.color }]}>
               <Animated.Image source={item.image} style={[styles.image, { transform: [{ translateY: translateYImage }] }]} />
-              <View style = {styles.informationContainer}>
-              <Text style={styles.TextTitle}>{item.name}</Text>
-              <View style = {styles.smallInfosContainer}>
-              <Feather name="clock" size={24} color={Colors.C200} />
-              <Text style={[styles.TextSubTitle, styles.smallInfosItem]} >{item.time}</Text>
-              <Octicons name="dot-fill" size={12} color={Colors.C200}/>
-              <Text style={[styles.TextSubTitle, styles.smallInfosItem]}>{item.type}</Text>
-              </View>
+              <View style={styles.informationContainer}>
+                <Text style={styles.TextTitle}>{item.name}</Text>
+                <View style={styles.smallInfosContainer}>
+                  <Feather name="clock" size={20} color={Colors.C200} />
+                  <Text style={[styles.TextSubTitle, styles.smallInfosItem]}>{item.time}</Text>
+                  <Octicons name="dot-fill" size={12} color={Colors.C200} />
+                  <Text style={[styles.TextSubTitle, styles.smallInfosItem]}>{item.type}</Text>
+                </View>
               </View>
             </View>
             <View style={styles.animationContainer}>
-            {/* 
+              {/* 
               <LottieView
                 source={confetti}
                 autoPlay={!playedOnce}
@@ -101,7 +100,7 @@ const CardCarousel: React.FC<CardCarouselProps> = ({ unitId }) => {
                 onAnimationFinish={() => setPlayedOnce(true)}
                 style={styles.confetti}
               />
-               */}
+              */}
             </View>
           </View>
         )}
@@ -113,7 +112,13 @@ const CardCarousel: React.FC<CardCarouselProps> = ({ unitId }) => {
         snapToInterval={screenWidth * 0.8 + 20}
         decelerationRate="fast"
         pagination={true}
+        vertical={true}
+        itemHeight={300}
+        sliderHeight={screenHeight * 0.5}
+        showsVerticalScrollIndicator={false} // Remove vertical scroll indicator
+        inactiveSlideScale={0.8}
       />
+      
       <Pagination
         dotsLength={unit.courses.length} // Number of dots to render
         activeDotIndex={activeIndex} // Active dot index
@@ -128,7 +133,7 @@ const CardCarousel: React.FC<CardCarouselProps> = ({ unitId }) => {
 
 const styles = StyleSheet.create({
   paginationContainer: {
-    paddingTop : 30,
+    paddingTop: 30,
     alignSelf: 'center',
   },
   paginationDot: {
@@ -136,24 +141,24 @@ const styles = StyleSheet.create({
     height: 8,
     borderRadius: 4,
     marginHorizontal: 3,
-    backgroundColor: Colors.purple, 
+    backgroundColor: Colors.purple,
   },
-  informationContainer:{
+  informationContainer: {
     position: 'absolute',
     bottom: 0,
     width: '100%',
-    padding: 5 ,
+    padding: 5,
     alignItems: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 0.2)', 
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
   },
-  smallInfosContainer:{
+  smallInfosContainer: {
     alignItems: 'center',
     marginTop: 5,
     flexDirection: 'row',
     justifyContent: 'center',
     width: '100%',
   },
-  smallInfosItem:{
+  smallInfosItem: {
     marginHorizontal: 8,
   },
   image: {
@@ -175,15 +180,15 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 30 },
     shadowOpacity: 0.1,
   },
-  TextTitle:{
+  TextTitle: {
     fontSize: 20,
     fontFamily: 'nun-bold',
-    color : Colors.white,
+    color: Colors.white,
   },
-  TextSubTitle:{
+  TextSubTitle: {
     fontSize: 16,
     fontFamily: 'nun-semibold',
-    color : Colors.C200,
+    color: Colors.C200,
   },
   animationContainer: {
     position: 'absolute',

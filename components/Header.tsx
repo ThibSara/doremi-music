@@ -90,10 +90,11 @@ const styles = StyleSheet.create({
     marginLeft: 'auto',
   },
   textStyle: {
-    fontFamily: 'nun-semibold',
+    fontFamily: 'nun-bold',
     color: Colors.C300,
     fontSize: 16,
   },
+
   objectifText: {
     fontFamily: 'nun-semibold',
     color: Colors.C250,
